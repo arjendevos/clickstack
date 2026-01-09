@@ -24,6 +24,7 @@
 **/.env.test.local
 **/.env.production.local
 **/.env.local
+**/.env
 **/.dockerhub.env
 **/.ghcr.env
 

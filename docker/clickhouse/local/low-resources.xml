@@ -1,0 +1,48 @@
+<!-- Performance-optimized for 4GB RAM and 2 CPU cores -->
+<clickhouse>
+    <!-- Mark cache: ~512MB for better query performance -->
+    <mark_cache_size>536870912</mark_cache_size>
+
+    <!-- Max memory usage: ~3GB (aggressive but safe with monitoring) -->
+    <max_server_memory_usage>3221225472</max_server_memory_usage>
+
+    <!-- Uncompressed cache: ~768MB for faster data access -->
+    <uncompressed_cache_size>805306368</uncompressed_cache_size>
+
+    <!-- Index mark cache: ~256MB -->
+    <index_mark_cache_size>268435456</index_mark_cache_size>
+
+    <profile>
+        <default>
+            <!-- Maximize CPU usage with 4 threads (2x cores for I/O wait) -->
+            <max_threads>4</max_threads>
+
+            <!-- Larger block size for better throughput -->
+            <max_block_size>65536</max_block_size>
+
+            <!-- Allow parallel downloads -->
+            <max_download_threads>4</max_download_threads>
+
+            <!-- Enable parallel parsing for better ingestion performance -->
+            <input_format_parallel_parsing>1</input_format_parallel_parsing>
+
+            <!-- Enable parallel formatting for faster output -->
+            <output_format_parallel_formatting>1</output_format_parallel_formatting>
+
+            <!-- Allow queries to use up to ~1.5GB per query -->
+            <max_memory_usage>1610612736</max_memory_usage>
+
+            <!-- Limit concurrent queries to prevent overload -->
+            <max_concurrent_queries>100</max_concurrent_queries>
+
+            <!-- Enable query result cache for repeated queries -->
+            <use_query_cache>1</use_query_cache>
+
+            <!-- Optimize JOIN operations -->
+            <max_bytes_in_join>536870912</max_bytes_in_join>
+
+            <!-- Better aggregation performance -->
+            <max_bytes_before_external_group_by>1073741824</max_bytes_before_external_group_by>
+        </default>
+    </profile>
+</clickhouse>
